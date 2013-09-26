@@ -1,17 +1,19 @@
-public class stats {
+public class Stats {
 
 	public static void main(String[] args) {
-		int[] a = {  1,  2,  3,  4,  5, 6}; 
+		int[] a = {  1,  2,  3,  4,  5, 6};
 
-		//max(a);
-		//min(a);
-		//avg(a);
-		med(a);
+
+		max(a);
+		min(a);
+		mean(a);
+		median(a);
+		mode(a);
 	}
 
-	public static void max (int[] a) {
+	public static int max (int[] a) {
 
-		int x = 0;
+		int x = a[0];
 
 		for (int i = 0; i < a.length ; i++) {
 
@@ -19,12 +21,12 @@ public class stats {
 				x = a[i];
 			} 
 		}
-
-		System.out.println("The max is : " + x);
+		return x;
+		
 	}
 
 
-	public static void min(int[] a) {
+	public static int min(int[] a) {
 
 		int x = a[0];
 
@@ -35,12 +37,12 @@ public class stats {
 			}
 		}
 
-		System.out.println("The min is : " + x);
+		return x;
 	}
 
-	public static void avg(int[] a) {
+	public static double mean(int[] a) {
 
-		int x = 0;
+		double x = 0;
 
 		for (int i = 0; i < a.length; i++ ) {
 			
@@ -49,20 +51,57 @@ public class stats {
 
 		x = x/a.length;
 
-		System.out.println("The average is : " + x);
+		return x;
 	}
 
-	public static void med(int[] a) {
+	public static double median(int[] a) {
 
-		int x = 0;
+		
 
-		x = a.length/2;
-		x = a[x];
+		int x = a.length/2;
+		return a[x];
 
-		System.out.println("The median is : " + x);
 
 
 		
 	}
 
+	public static double quartile1(int[] a) {
+
+		int x = (int)median(a)/2;
+		return x;
+
+	}
+
+	public static int quartile3(int[] a) {
+
+		int x = (int)median(a) + (int)quartile1(a);
+		return x;
+
+	}
+
+	public static int mode(int[] a) {
+
+		int x = a[0];
+		int y = 1;
+		
+
+		for (int i = 0;i < a.length; i++ ) {
+			
+			if (x == a[i]) {
+					y++;
+				}	
+
+		}
+
+		if (y > 1) {
+			return x;
+			
+		}
+		return x;
+	}
+
+	public static int standardDeviation(int[] a) {
+
+	}
 }
